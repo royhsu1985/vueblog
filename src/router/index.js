@@ -40,8 +40,13 @@ const routes = [
     component:Admin,
     children:[
       {
+        path:'/',
+        name:'Admin-Home',
+        component:Admin
+      },
+      {
         path:'/add',
-        name:'Add',
+        name:'Admin_Add',
         component:Add
       },
     ]
