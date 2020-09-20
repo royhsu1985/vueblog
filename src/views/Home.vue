@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <article v-for="art in articles" :key="art.Id">
-      <h3>{{art.title}}</h3>
+    <article v-for="art in articles" :key="art.id">
+      <h3 @click="routerToArticle(art.id)">{{art.title}}</h3>
       <i>{{art.date}}</i>
       <span>{{art.content|subContent}}</span>
     </article>
@@ -23,6 +23,11 @@ export default {
   data(){
     return{
       articles:null,
+    }
+  },
+  methods:{
+    routerToArticle:function(id){
+      this.$router.push({name:"Article",params:{id:id}})
     }
   },
   filters:{
