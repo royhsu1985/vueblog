@@ -16,25 +16,17 @@
 <script>
 import axios from 'axios'
 import SideBar from '@/components/SideBar'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
-    mounted(){
-    const api = "https://us-central1-expressapi-8c039.cloudfunctions.net/app/article"
-    axios.get(api)
-    .then(result=>{
-      this.articles = result.data.data
-    })
-  },
-  data(){
-    return{
-      articles:null,
-    }
-  },
   methods:{
     routerToArticle:function(id){
       this.$router.push({name:"Article",params:{id:id}})
     }
+  },
+  computed:{
+    ...mapState(['articles']),
   },
   filters:{
     subContent: (content) =>{

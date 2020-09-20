@@ -11,8 +11,10 @@
 
 <script>
 import Header from '@/components/Header'
-import axios from 'axios'
 export default {
+  mounted(){
+    this.$store.dispatch('fetchArticles')
+  },
   components:{
     Header,  
   }
