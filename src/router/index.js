@@ -6,6 +6,7 @@ import Article from '@/views/Article'
 import Login from '@/views/Login'
 import Admin from '@/views/Admin'
 import Add from '@/views/Admin/Add'
+import NotFound404 from '@/views/NotFound404'
 
 Vue.use(VueRouter)
 
@@ -50,6 +51,11 @@ const routes = [
         component:Add
       },
     ]
+  },
+  {
+    path:'/*',
+    name:'NotFound404',
+    component:NotFound404
   },
 
 ]
