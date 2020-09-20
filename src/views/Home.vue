@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <section class="home-articles">
-    <article v-for="art in articles" :key="art.id">
+    <article v-for="art in filterBySearchKey" :key="art.id">
       <h3 @click="routerToArticle(art.id)">{{art.title}}</h3>
       <i>{{art.date | toDate}}</i>
       <span>{{art.content|subContent}}</span>
@@ -14,9 +14,9 @@
 </template>
 
 <script>
+import { mapState, mapGetters} from 'vuex'
 import axios from 'axios'
 import SideBar from '@/components/SideBar'
-import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
@@ -27,6 +27,7 @@ export default {
   },
   computed:{
     ...mapState(['articles']),
+    ...mapGetters(['filterBySearchKey'])
   },
   filters:{
     subContent: (content) =>{

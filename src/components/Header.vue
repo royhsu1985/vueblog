@@ -23,14 +23,38 @@
             </b-nav-item>
           </b-navbar-nav>
           <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+            <b-form-input size="sm" class="mr-sm-2" placeholder="Search" v-model="searchKey"></b-form-input>
+            <b-button size="sm" class="my-2 my-sm-0" type="submit" @click.prevent="submitSearchKey">Search</b-button>
           </b-nav-form>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>
 </template>
+<script>
+import {mapActions} from 'vuex'
+export default {
+  data(){
+    return{
+      searchKey:"",
+    }
+  },
+  methods:{
+    ...mapActions(['changeSearchKey'],),
+
+    submitSearchKey:function(){
+      this.changeSearchKey(this.searchKey)
+    }
+  },
+  watch:{
+    searchKey:function(){
+      if(this.searchKey === ""){
+        this.submitSearchKey()
+      }
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
     .nav-item{
