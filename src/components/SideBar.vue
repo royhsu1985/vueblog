@@ -3,7 +3,7 @@
         <h4>最新文章</h4>
         <hr>
         <ul>
-            <li v-for="(art,index)in articles" :key="index" @click="routerArticle(art.id)">
+            <li v-for=" art in articles" :key="art.id" @click="routerToArticle(art.id)">
                 {{art.title}}
             </li>
         </ul>
