@@ -36,7 +36,8 @@ export default new Vuex.Store({
       if(state.searchKey === ""){
         return state.articles
       }else{
-        return state.articles.filter(art=> art.title == state.searchKey)
+        //可以searchKey不用輸入全部 
+        return state.articles.filter(art=> art.title.match(state.searchKey))
       }
     }
   }
