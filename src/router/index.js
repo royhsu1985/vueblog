@@ -48,7 +48,12 @@ const routes = [
       },
       {
         path:'add',
-        name:'Admin_Add',
+        name:'Admin-Add',
+        component:Add
+      },
+      {
+        path:'edit/id',
+        name:'Admin-Edit',
         component:Add
       },
     ]
