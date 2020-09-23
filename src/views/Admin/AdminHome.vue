@@ -10,7 +10,7 @@
          <template v-slot:cell(id)="data">
             <b-button-group>
                 <b-button @click="editArticle(data.value)">修改</b-button>
-                <b-button @click="deleteArticle(data.value)">刪除</b-button>
+                <b-button @click="delArticle(data.value)">刪除</b-button>
             </b-button-group>    
          </template>
     </b-table>
@@ -31,12 +31,15 @@ export default {
         };
     },
     methods:{
-        ...mapActions(['fetchArticles']),
+        ...mapActions(['fetchArticles', 'deleteArticle']),
         editArticle:function(id){
             this.$router.push({name:"Admin-Edit",params:{id:id}})
         },
-        deleteArticle:function(id){
-            console.log(id);
+        delArticle:function(id){
+            const ensure = confirm("是否要刪除這篇文章？")
+            if(ensure){
+                this.deleteArticle(id)
+            }
         }
     },
   computed:{
