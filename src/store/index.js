@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import _ from 'lodash'
+import { db } from './firebase.js'
 
 Vue.use(Vuex)
 
@@ -40,11 +41,19 @@ export default new Vuex.Store({
   },
   actions: {
     fetchArticles: async ({commit}) =>{
-        const api = "https://us-central1-expressapi-8c039.cloudfunctions.net/app/article"
-     const result = await axios.get(api)
-     console.log(result.data.data)
-     const payload = result.data.data
+    //     const api = "https://us-central1-expressapi-8c039.cloudfunctions.net/app/article"
+    //  const result = await axios.get(api)
+    //  console.log(result.data.data)
+    //  const payload = result.data.data
+    //   commit('fetchArticles',payload)
+    //   console.log(db)
+    const Ref = db.collection("Articles")
+    const result = await Ref.get()
+    var payload = []
+    result.forEach(art =>{
+      payload.push({id:art.id,...art.data()})
       commit('fetchArticles',payload)
+    })
     },
     changeSearchKey:({commit},payload) =>{
       commit('changeSearchKey',payload)
@@ -53,9 +62,12 @@ export default new Vuex.Store({
       commit('changeFocusId',payload)
     },
     addArticle:({commit},payload)=>{
-      const ID = _.random(1000)
-      payload.id = "newArt1"+ ID
-      commit('addArticle',payload)
+      // const ID = _.random(1000)
+      // payload.id = "newArt1"+ ID
+      // commit('addArticle',payload)
+      const Ref = db.collection("Articles")
+      const addRef = Ref.add(payload)
+      commit('addArticle',{id:addRef.id, ...payload})
     },
     updateArticle: ({commit},payload)=>{
       commit('updateArticle',payload)
