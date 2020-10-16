@@ -23,8 +23,9 @@
             max-rows="6"
     ></b-form-textarea>
       </b-form-group>
-      <b-button @click.prevent="submitFormData" type="submit" variant="primary">送出</b-button>
-      <b-button @click.prevent="resetFormData" variant="danger">清除</b-button>
+      <b-button  v-if="!submited" @click.prevent="submitFormData" type="submit" variant="primary">送出</b-button>
+      <b-button v-if="!submited" @click.prevent="resetFormData" variant="danger">清除</b-button>
+      <b-spinner v-else variant="primary" label="Spinning"></b-spinner>
     </b-form>
   </div>
 </template>
@@ -48,6 +49,7 @@ export default {
                 date:"",
                 content:"",
             },
+            submited:false,
             thisAccount:null,
         }
     },
@@ -62,6 +64,7 @@ export default {
             }
         },
         submitFormData:function(){
+            this.submited = true;
             this.formData.date = new Date().getTime()
             if(this.mode =='edit'){
                 this.updateArticle({id:this.$route.params.id, newArticle:this.formData})
