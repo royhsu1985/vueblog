@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import _ from 'lodash'
 import { db } from './firebase.js'
+// import { delete } from 'vue/types/umd'
 
 Vue.use(Vuex)
 
@@ -61,18 +62,22 @@ export default new Vuex.Store({
     changeFocusId:({commit},payload)=>{
       commit('changeFocusId',payload)
     },
-    addArticle:({commit},payload)=>{
+    addArticle: async ({commit},payload)=>{
       // const ID = _.random(1000)
       // payload.id = "newArt1"+ ID
       // commit('addArticle',payload)
       const Ref = db.collection("Articles")
-      const addRef = Ref.add(payload)
+      const addRef = await Ref.add(payload)
       commit('addArticle',{id:addRef.id, ...payload})
     },
-    updateArticle: ({commit},payload)=>{
+    updateArticle: async ({commit},payload)=>{
+      const docRef = db.collection("Articles").doc(payload.id)
+      await docRef.update(payload.newArticle)
       commit('updateArticle',payload)
     },
-    deleteArticle:({commit},payload)=>{
+    deleteArticle: async ({commit},payload)=>{
+      const docRef = db.collection("Articles").doc(payload)
+      await docRef.delete()
       commit('deleteArticle',payload)
     }
   },
