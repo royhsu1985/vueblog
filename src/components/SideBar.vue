@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div b-container fluid="sm">
+        <div class="row">
+            <div class="col-12">
         <h4>最新文章</h4>
         <hr>
         <ul>
@@ -7,6 +9,8 @@
                 {{art.title}}
             </li>
         </ul>
+        </div>
+        </div>
     </div>
 </template>
 <script>
@@ -23,7 +27,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     div{
-        width: 21vw;
+        width: 18vw;
         position: fixed;
         right: 1rem;
         background-color: #cccccc;
@@ -52,6 +56,11 @@ export default {
                     text-decoration-color: underline;
                 }
             }
+        }
+    }
+    @media screen and (max-width: 600px){
+        div{
+            display: none;
         }
     }
 </style>
