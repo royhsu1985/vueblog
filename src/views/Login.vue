@@ -1,5 +1,8 @@
 <template>
   <div>
+    <b-container>
+      <b-row>
+        <b-col cols="12">
     <b-form>
       <b-form-group
         id="input-group-1"
@@ -26,6 +29,9 @@
 
       <b-button @click.prevent="routerToAdmin" type="submit" variant="primary">Submit</b-button>
     </b-form>
+     </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 

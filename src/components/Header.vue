@@ -23,8 +23,8 @@
             </b-nav-item>
           </b-navbar-nav>
           <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-2" placeholder="Search" v-model="searchKey"></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit" @click.prevent="submitSearchKey">Search</b-button>
+            <b-form-input size="sm" class="mx-sm-1" placeholder="Search" v-model="searchKey"></b-form-input>
+            <b-button size="sm" class="my-1 my-sm-0" type="submit" @click.prevent="submitSearchKey">Search</b-button>
           </b-nav-form>
         </b-navbar-nav>
       </b-collapse>

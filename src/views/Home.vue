@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <section class="home-articles">
+          <section class="home-articles">
     <article v-for="art in filterBySearchKey" :key="art.id">
-      <h3 @click="routerToArticle(art.id)">{{art.title}}</h3>
+      <h4 @click="routerToArticle(art.id)">{{art.title}}</h4>
       <i>{{art.date | toDate}}</i>
-      <span>{{art.content|subContent}}</span>
+      <span class="ellipsis">{{art.content|subContent}}</span>
     </article>
     </section>
     <section class="home-side-bar">
@@ -31,7 +31,7 @@ export default {
   },
   filters:{
     subContent: (content) =>{
-      return content.substring(0,200)
+      return content.substring(0,100)
     },
      toDate:timestamp=>{
     const date =new Date(timestamp);
@@ -53,14 +53,14 @@ export default {
   display: flex;
 
   article{
-    padding-left: 1rem;
-    margin: 1rem;
+    padding: 1rem;
+    margin: 3rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: flex-start;
-    width: 75vw;
-    height: 200px;
+    width: 70vw;
+    height: 250px;
     background-color: #f0f0e8;
     border-radius: 1rem;
     h3{
@@ -76,11 +76,20 @@ export default {
       text-align: left;
       padding-right: 1.5rem;
     }
+    .ellipsis{
+      overflow:hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      white-space: normal;
+    }
   }
   .home-side-bar{
-    width: 25vw;
+    width: 30vw;
     padding: 1rem;
-    height: calc(100vh - 56px);
+    height: calc(100vh - 20px);
   }
 }
 </style>

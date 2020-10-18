@@ -1,8 +1,8 @@
 <template>
    <article>
-       <h2>{{filterById.title}}</h2>
-        <i>{{filterById.date}}</i>
-        <span v-html="filterById.content"></span>
+                <h2 class="my-0">{{filterById.title}}</h2>
+                <i>{{filterById.date}}</i>
+                <span v-html="filterById.content"></span>
    </article>
 </template>
 <script>
@@ -38,7 +38,7 @@ export default {
             let N = date.getMonth();
             let D = date.getDate();
             let H = date.getHours();
-            let min = (Arroy(2).join("0")*date.getMinutes()).slice(-2);
+            let min = (Array(2).join("0")*date.getMinutes()).slice(-2);
             return `${Y}/${M + 1}/${D} ${H}:${min}`;
         }
     }

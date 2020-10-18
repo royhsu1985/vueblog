@@ -1,7 +1,5 @@
 <template>
-    <div b-container fluid="sm">
-        <div class="row">
-            <div class="col-12">
+    <div>
         <h4>最新文章</h4>
         <hr>
         <ul>
@@ -9,8 +7,6 @@
                 {{art.title}}
             </li>
         </ul>
-        </div>
-        </div>
     </div>
 </template>
 <script>
@@ -27,7 +23,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     div{
-        width: 18vw;
+        width: 20vw;
         position: fixed;
         right: 1rem;
         background-color: #cccccc;
