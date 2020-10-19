@@ -1,8 +1,14 @@
 <template>
    <article>
+       <b-container>
+           <b-row>
+               <b-col cols="12">
                 <h2 class="my-0">{{filterById.title}}</h2>
-                <i>{{filterById.date}}</i>
+                <i>{{filterById.date}}</i><br>
                 <span v-html="filterById.content"></span>
+               </b-col>
+           </b-row>
+       </b-container>
    </article>
 </template>
 <script>
